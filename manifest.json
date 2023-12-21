@@ -1,6 +1,6 @@
 {
   "name": "shipping-simulator",
-  "vendor": "dcmallio",
+  "vendor": "tfcusf",
   "version": "1.0.0",
   "builders": {
     "react": "3.x",
