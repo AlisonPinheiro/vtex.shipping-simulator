@@ -4,3 +4,6 @@ declare module 'vtex.address-form'
 declare module 'vtex.order-shipping/OrderShipping'
 declare module 'vtex.order-manager/OrderForm'
 declare module 'vtex.styleguide'
+declare module 'vtex.shipping-estimate-translator/TranslateEstimate';
+declare module 'classnames';
+declare module 'vtex.format-currency';

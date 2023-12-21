@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useIntl } from 'react-intl'
 import {
   AddressContainer,
@@ -9,7 +9,8 @@ import { StyleguideInput } from 'vtex.address-form/inputs'
 import { Button } from 'vtex.styleguide'
 import ShippingSimulatorLoader from './Loader'
 import styles from './shippingSimulator.css'
-import { pathOr } from 'ramda'
+// import { pathOr } from 'ramda'
+import ShippingTable from './components/ShippingTable'
 
 const ShippingSimulator = (props: any) => {
   const {
@@ -23,29 +24,24 @@ const ShippingSimulator = (props: any) => {
     loaderStyles,
     skuId,
     shipping,
+    pricingMode
   } = props
-  console.log(props)
-  const [showCost, setShowCost] = useState(false)
   const intl = useIntl()
 
-  const price = pathOr(0, ['logisticsInfo', 0, 'slas', 0, 'price'], shipping)
-  const department = pathOr('', ['state', 'value'], address)
-  const city = pathOr('', ['city', 'value'], address)
-  const district = pathOr('', ['district', 'value'], address)
+  // const price = pathOr(0, ['logisticsInfo', 0, 'slas', 0, 'price'], shipping)
+  // const department = pathOr('', ['state', 'value'], address)
+  // const city = pathOr('', ['city', 'value'], address)
+  // const district = pathOr('', ['district', 'value'], address)
 
   if (!seller || !skuId) {
     return <ShippingSimulatorLoader {...loaderStyles} />
   }
 
-  useEffect(() => {
-    if (price != 0) {
-      setShowCost(true)
-    }
-  }, [price])
 
   return (
-    <div>
-      {!showCost ? (
+    <>
+    <>
+
         <div className={`${styles.shippingContainer} t-small c-on-base`}>
           <AddressRules country={country} shouldUseIOFetching>
             <AddressContainer
@@ -70,18 +66,9 @@ const ShippingSimulator = (props: any) => {
             {intl.formatMessage({ id: 'store/shipping.label' })}
           </Button>
         </div>
-      ) : (
-        <div>
-          <p>
-            {department != '' ? department : ''}
-            {city != '' ? `,${city}` : ''}{' '}
-            {district != '' ? `,${district}` : ''}
-          </p>
-          Tu dirección cuesta {price}
-          <button onClick={() => setShowCost(!showCost)}>SHOW VIEW</button>
-        </div>
-      )}
-    </div>
+    </>
+    {pricingMode && <ShippingTable shipping={shipping} pricingMode={pricingMode} />}
+    </>
   )
 }
 

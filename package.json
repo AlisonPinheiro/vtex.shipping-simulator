@@ -22,7 +22,11 @@
       "prettier --write"
     ]
   },
+  "dependencies": {
+    "classnames": "^2.3.2"
+  },
   "devDependencies": {
+    "@types/classnames": "^2.3.1",
     "@vtex/intl-equalizer": "^2.5.0",
     "@vtex/prettier-config": "^0.3.5",
     "eslint": "^7.14.0",

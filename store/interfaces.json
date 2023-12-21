@@ -1,5 +1,5 @@
 {
-  "shipping-simulator": {
+  "custom-shipping-simulator": {
     "component": "ShippingSimulator"
   }
 }
