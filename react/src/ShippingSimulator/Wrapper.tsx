@@ -62,12 +62,12 @@ const BaseShippingSimulatorWrapper = ({
 
   const client = useApolloClient()
 
-  const handleCalculateShipping = useCallback(
+  const  handleCalculateShipping  =  useCallback(
     (e?) => {
       e && e.preventDefault()
       setLoading(true)
       const rawAddress = removeValidation(address)
-
+      console.log(rawAddress, 'rawAddress')
       client
         .query({
           query: getShippingEstimates,
