@@ -19,7 +19,7 @@ const ShippingSimulator = (props: any) => {
     onAddressChange,
     onCalculateShipping,
     loading,
-    isValid,
+    // isValid,
     seller,
     loaderStyles,
     skuId,
@@ -45,16 +45,18 @@ const ShippingSimulator = (props: any) => {
     if (userData.city == '' || userData.street == '') {
       setCepError(true)
       console.log(cepError, 'cepError')
+    } else {
+      setCepError(false)
     }
   }
 
   useEffect(() => {
-    console.log(address)
+    console.log(address, 'address')
     checkCep(address.postalCode.value)
   }, [address])
 
   return (
-    <div className={`${cepError ? 'error-shipping' : ''} shippingSimulator`}>
+    <div className={`${cepError ?  `${styles.errorShipping}` : ''}   ${styles.shippingSimulator}`}>
       <>
         <div className={`${styles.shippingContainer} t-small c-on-base`}>
           <AddressRules country={country} shouldUseIOFetching>
@@ -65,20 +67,15 @@ const ShippingSimulator = (props: any) => {
               autoCompletePostalCode
               disabled={loading}
             >
-              <PostalCodeGetter onSubmit={onCalculateShipping}>
-
-              </PostalCodeGetter>
-              {cepError && (
-                  <div className="vtex-input__error c-danger t-small mt3 lh-title">
-                    CEP inválido.
-                  </div>
-                )}
+              <PostalCodeGetter
+                onSubmit={onCalculateShipping}
+              ></PostalCodeGetter>
             </AddressContainer>
           </AddressRules>
           <Button
             onClick={onCalculateShipping}
             className={styles.shippingCTA}
-            disabled={!isValid}
+            disabled={cepError}
             size="small"
             type="submit"
             block

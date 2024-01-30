@@ -26,6 +26,14 @@ const ShippingTableRow: React.FC<ShippingTableRowProps> = ({ name, shippingEstim
     }
   );
 
+  const formatCurrency = (value: number): string => {
+    const stringValue = value.toFixed(2); // Garante duas casas decimais
+    const [integerPart, decimalPart] = stringValue.split('.');
+    const formattedValue = `R$${integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.')},${decimalPart}`;
+  
+    return formattedValue;
+  };
+
   let valueText;
 
   if (typeof price === 'undefined') {
@@ -33,7 +41,9 @@ const ShippingTableRow: React.FC<ShippingTableRowProps> = ({ name, shippingEstim
   } else if (price === 0) {
     valueText = formatMessage({ id: 'store/shipping.free' });
   } else {
-    valueText = <span>{price / 100}</span>;
+    price = price / 100
+    
+    valueText = <span>{formatCurrency(price)}</span>;
   }
 
   return (
