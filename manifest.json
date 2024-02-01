@@ -7,10 +7,18 @@
     "store": "0.x",
     "messages": "1.x"
   },
-  "title": "",
-  "description": "",
+  "title": "shipping-simulator",
+  "description": "shipping-simulator",
   "scripts": {
     "postreleasy": "vtex publish --verbose"
+  },
+  "billingOptions": {
+    "type": "free",
+    "support": {
+        "email": "alisonpinheiro17@gmail.com",
+        "url": "https://alisonpinheiro.com.br"
+      },
+    "availableCountries" : ["*"]
   },
   "dependencies": {
     "vtex.address-form": "4.x",
