@@ -1,7 +1,7 @@
 {
   "name": "shipping-simulator",
   "vendor": "tfcusf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "builders": {
     "react": "3.x",
     "store": "0.x",
@@ -15,10 +15,12 @@
   "billingOptions": {
     "type": "free",
     "support": {
-        "email": "alisonpinheiro17@gmail.com",
-        "url": "https://alisonpinheiro.com.br"
-      },
-    "availableCountries" : ["*"]
+      "email": "alisonpinheiro17@gmail.com",
+      "url": "https://alisonpinheiro.com.br"
+    },
+    "availableCountries": [
+      "*"
+    ]
   },
   "dependencies": {
     "vtex.address-form": "4.x",
