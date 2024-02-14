@@ -12,16 +12,6 @@
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
-  "billingOptions": {
-    "type": "free",
-    "support": {
-      "email": "alisonpinheiro17@gmail.com",
-      "url": "https://alisonpinheiro.com.br"
-    },
-    "availableCountries": [
-      "*"
-    ]
-  },
   "dependencies": {
     "vtex.address-form": "4.x",
     "vtex.product-context": "0.x",
