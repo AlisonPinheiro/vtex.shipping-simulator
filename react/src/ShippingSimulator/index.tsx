@@ -35,14 +35,16 @@ const ShippingSimulator = (props: any) => {
   const [cepError, setCepError] = useState<boolean>(false)
 
   const checkCep = async (postalCode: string) => {
-    console.log(postalCode, 'postalCode')
+    if(postalCode == null || postalCode.length <= 8) return 
+    postalCode = postalCode.replace(/[^0-9]/g,'')
+
     const response = await fetch(
       `/api/checkout/pub/postal-code/BRA/${postalCode}`
     )
     const userData = await response.json()
     console.log(userData, 'userData')
 
-    if (userData.city == '' || userData.street == '') {
+    if (userData.city == '' && userData.street == '' && userData.state == '') {
       setCepError(true)
       console.log(cepError, 'cepError')
     } else {
